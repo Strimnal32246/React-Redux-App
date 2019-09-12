@@ -1,5 +1,6 @@
 import { FETCHING_ANIME_START } from "../actions/AnimeActions.js;"
 
+
 const initialState = {
 anime:[],
 isFetching:false,
