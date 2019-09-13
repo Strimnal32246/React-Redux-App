@@ -1,10 +1,19 @@
-import { createStore, applyMiddleware, compose } from "redux";
+import { createStore, applyMiddleware, compose, combineReducers } from "redux";
 import { connectRouter, routerMiddleware } from "connected-react-router";
 import thunk from "redux-thunk";
-import createHistory from "history/createBrowserHistory";
+import { Router, Route, browserHistory } from "react-router";
+import { syncHistoryWithStore, routerReducer } from "react-router-redux";
 import rootReducer from "./modules";
+import { Provider } from "react-redux";
 
-export const history = createHistory();
+const store = createStore(
+  combineReducers({
+    ...reducers,
+    routing: routerReducer
+  })
+);
+
+const history = syncHistoryWithStore(browserHistory, store);
 
 const initialState = {};
 const enhancers = [];
@@ -29,4 +38,15 @@ const store = createStore(
   composedEnhancers
 );
 
+ReactDOM.render(
+  <Provider store={store}>
+    {/* Tell the Router to use our enhanced history */}
+    <Router history={history}>
+      <Route path="/" component={home} />
+    </Router>
+  </Provider>,
+  document.getElementById("mount")
+);
+
+store.dispatch(push("/AnimeActions"));
 export default store;

@@ -1,6 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 
+
 const Anime = () => {
   return <h2>Welcome to My Anime Page</h2>;
 };

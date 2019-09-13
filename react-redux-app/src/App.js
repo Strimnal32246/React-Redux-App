@@ -3,6 +3,7 @@ import { Route, Link } from "react-router-dom";
 import Home from "./components/home.js";
 import { connect } from "react-redux";
 
+
 function App() {
   return (
     <div className="App">
