@@ -23,6 +23,7 @@ const PokemonList = props => {
           width: 600,
           flexWrap: "wrap",
           margin: "0 auto"
+          
         }}
       >
         {props.pokemon.map(pokemon => {
