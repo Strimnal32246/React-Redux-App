@@ -1,30 +1,20 @@
-import React from "react";
-import { Route, Link } from "react-router-dom";
-import Home from "./components/home.js";
-import { connect } from "react-redux";
+import axios from "axios";
 
+import React from "react";
+import "./App.css";
+
+import PokemonList from "./components/PokeList.js";
 
 function App() {
+  axios.get("https://pokeapi.co/api/v2/pokemon").then(res => {
+    console.log(res);
+  });
+
   return (
     <div className="App">
-      <header className="App-header">
-        <h1>Welcome to the Anime Page</h1>
-        <Link to="/">Home</Link>
-      </header>
-      <main>
-        <Route exact path="/" component={Home} />
-      </main>
+      <PokemonList />
     </div>
   );
 }
-const mapstateToProps = state => {
-  return {
-    anime: state.anime,
-    isFetching: state.isFecthing,
-    error: state.error
-  };
-};
-export default connect(
-  mapstateToProps,
-  {}
-)(App);
+
+export default App;
