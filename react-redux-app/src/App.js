@@ -6,7 +6,7 @@ import "./App.css";
 import PokemonList from "./components/PokeList.js";
 
 function App() {
-  axios.get("https://pokeapi.co/api/v2/pokemon").then(res => {
+  axios.get("").then(res => {
     console.log(res);
   });
 
