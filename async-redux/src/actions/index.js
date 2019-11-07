@@ -13,16 +13,13 @@ export const finalfantasyLoadFailure = error => ({
 });
 
 export function fetchFinalfantasy() {
-  // Thunk middleware knows how to handle functions.
-  // It passes the dispatch method as an argument to the function,
-  // thus making it able to dispatch actions itself.
-
   return function(dispatch) {
     dispatch(finalfantasyLoading());
 
     return fetch(`https://xivapi.com/character/730968?data=AC,FR,FC,FCM,PVP`)
-      .then(response => response.json())
+      .then(response => response.json())(console.log(fetchFinalfantasy))
       .then(json => dispatch(finalfantasyLoadSuccess(json.results)))
       .catch(error => dispatch(finalfantasyLoadFailure(error)));
   };
 }
+export default fetchFinalfantasy;

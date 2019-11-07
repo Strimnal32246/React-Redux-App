@@ -5,7 +5,7 @@ import logger from "redux-logger";
 import thunk from "redux-thunk";
 import { Provider } from "react-redux";
 import reducer from "./reducers/reducer.js";
-import PokeList from "./components/FinalfantasyList";
+import FinalfantasyList from "./components/FinalfantasyList";
 import App from "./App";
 import { composeWithDevTools } from "redux-devtools-extension";
 

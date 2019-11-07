@@ -1,31 +1,27 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+
+import fetchFinalfantasy from "../actions/index.js";
 import { connect } from "react-redux";
-import { fetchFinalfantasy } from "../actions/index.js";
+import FinalFantasy from "./FinalFantasy.js";
 
-function FinalfantasyList(props) {
-  console.log("FinalfantasyList", props);
-  return (
-    <>
-      <button onClick={() => props.dispatch(fetchFinalfantasy())}>
-        Get Data
-      </button>
-      {props.isFetching && <span>⏰</span>}
-      {props.error && <div>{props.error.message}</div>}
-      <ul>
-        {props.finalfantasy.map(f => (
-          <li className="finalfantasy" key={f.name}>
-            {f.name}
-          </li>
-        ))}
-      </ul>
-    </>
-  );
-}
+const FinalfantasyList = props => {
+  useEffect(() => {
+    props.fetchFinalfantasy();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
-const mapDispatchToProps = {
-  fetchFinalfantasy
+  console.log(props.finalfantasy);
+  {
+    props.finalfantasy.map(finalfantasy => {
+      return (
+        <FinalFantasy finalfantasy={finalfantasy} url={finalfantasy.url} />
+      );
+    });
+  }
+  const mapDispatchToProps = {
+    fetchFinalfantasy
+  };
 };
-
 export default connect(state => {
   console.log("mapStateToProps.STATE", state);
   return state;
