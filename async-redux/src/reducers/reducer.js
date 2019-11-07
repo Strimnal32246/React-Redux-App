@@ -22,7 +22,7 @@ function reducer(state = initialState, action) {
     case FETCH_FINALFANTASY_SUCCESS:
       return {
         ...state,
-        pokemon: action.payload,
+        finalfantasy: action.payload,
         isFetching: false,
         error: null
       };

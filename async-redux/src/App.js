@@ -5,10 +5,11 @@ import logger from "redux-logger";
 import thunk from "redux-thunk";
 import { Provider } from "react-redux";
 import reducer from "./reducers/reducer.js";
+import FinalfantasyList from "./components/FinalfantasyList.js";
 
 import { composeWithDevTools } from "redux-devtools-extension";
 
-import "./app.css";
+import "./App.css";
 
 const store = createStore(
   reducer,
@@ -19,6 +20,7 @@ function App() {
   return (
     <div className="App">
       <h1>Hello </h1>
+      <FinalfantasyList />
     </div>
   );
 }
